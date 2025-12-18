@@ -49,9 +49,9 @@ Description: Azure region where the resource should be deployed.
 
 Type: `string`
 
-### <a name="input_root_management_group_name"></a> [root\_management\_group\_name](#input\_root\_management\_group\_name)
+### <a name="input_root_management_group_id"></a> [root\_management\_group\_id](#input\_root\_management\_group\_id)
 
-Description: The name (ID) of the management group.
+Description: The ID of the management group. Possible values are 'alz' or a custom management group ID.
 
 Type: `string`
 

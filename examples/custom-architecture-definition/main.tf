@@ -20,7 +20,7 @@ provider "azurerm" {
 }
 
 locals {
-  root_management_group_name = jsondecode(file("${path.root}/lib/custom.alz_architecture_definition.json")).management_groups[0].id
+  root_management_group_id = jsondecode(file("${path.root}/lib/custom.alz_architecture_definition.json")).management_groups[0].id
 }
 
 module "amba_alz" {
@@ -31,7 +31,7 @@ module "amba_alz" {
   count = var.bring_your_own_user_assigned_managed_identity ? 0 : 1
 
   location                            = var.location
-  root_management_group_name          = local.root_management_group_name
+  root_management_group_id            = local.root_management_group_id
   resource_group_name                 = var.resource_group_name
   tags                                = var.tags
   user_assigned_managed_identity_name = var.user_assigned_managed_identity_name
@@ -45,7 +45,7 @@ module "amba_policy" {
   location           = var.location
   parent_resource_id = data.azapi_client_config.current.tenant_id
   policy_assignments_to_modify = {
-    (local.root_management_group_name) = {
+    (local.root_management_group_id) = {
       policy_assignments = {
         Deploy-AMBA-Notification = {
           parameters = {

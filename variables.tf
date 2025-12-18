@@ -6,9 +6,9 @@ variable "location" {
   nullable    = false
 }
 
-variable "root_management_group_name" {
+variable "root_management_group_id" {
   type        = string
-  description = "The name (ID) of the management group."
+  description = "The ID of the management group. Possible values are 'alz' or a custom management group ID."
   nullable    = false
 }
 

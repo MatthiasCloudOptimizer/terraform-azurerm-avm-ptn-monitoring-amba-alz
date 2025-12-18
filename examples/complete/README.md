@@ -21,7 +21,7 @@ provider "azurerm" {
 }
 
 locals {
-  root_management_group_name = "alz"
+  root_management_group_id = "alz"
 }
 
 module "amba_alz" {
@@ -32,7 +32,7 @@ module "amba_alz" {
   count = var.bring_your_own_user_assigned_managed_identity ? 0 : 1
 
   location                            = var.location
-  root_management_group_name          = local.root_management_group_name
+  root_management_group_id          = local.root_management_group_id
   resource_group_name                 = var.resource_group_name
   tags                                = var.tags
   user_assigned_managed_identity_name = var.user_assigned_managed_identity_name

@@ -22,8 +22,8 @@ module "user_assigned_managed_identity" {
 }
 
 resource "azapi_resource" "role_assignments" {
-  name      = uuidv5("oid", "${var.role_definition_id}-${var.user_assigned_managed_identity_name}-${var.root_management_group_name}")
-  parent_id = "/providers/Microsoft.Management/managementGroups/${var.root_management_group_name}"
+  name      = uuidv5("oid", "${var.role_definition_id}-${var.user_assigned_managed_identity_name}-${var.root_management_group_id}")
+  parent_id = "/providers/Microsoft.Management/managementGroups/${var.root_management_group_id}"
   type      = "Microsoft.Authorization/roleAssignments@2022-04-01"
   body = {
     properties = {
